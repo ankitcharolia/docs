@@ -1,11 +1,11 @@
 ---
 layout: default
-title: MariaDB to MySQL Migration Guide
+title: AWS MariaDB to Google MySQL Migration Guide
 parent: Database
 nav_order: 1
 ---
 
-# How to migrate AWS MariaDB databse to Google MySQL Cloud SQL
+## How to migrate AWS MariaDB databse to Google MySQL Cloud SQL
 
 ### MariaDB dump from AWS RDS MariaDB
 ```shell
