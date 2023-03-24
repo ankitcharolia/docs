@@ -18,3 +18,5 @@ fi
 
 aws eks update-kubeconfig --name $1 --region $REGION
 ```
+
+**NOTE:** Execute the script: `./switchEKS.sh test-cluster`

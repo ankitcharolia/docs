@@ -4,6 +4,11 @@ title: Setup GCP Project
 parent: GCP
 nav_order: 2
 ---
+### Enable Compute Engine API & Kubernetes Engine API
+```shell
+gcloud services enable compute.googleapis.com                             
+gcloud services enable container.googleapis.com
+```
 
 ### How to Setup GCP Project
 ```shell
