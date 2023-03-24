@@ -4,11 +4,6 @@ title: Setup GCP Project
 parent: GCP
 nav_order: 2
 ---
-### Enable Compute Engine API & Kubernetes Engine API
-```shell
-gcloud services enable compute.googleapis.com                             
-gcloud services enable container.googleapis.com
-```
 
 ### How to Setup GCP Project
 ```shell
@@ -25,7 +20,9 @@ gcloud config configurations create $1
 gcloud config set account $2
 gcloud config set project $1
 
-# Compute API must be enabled
+# Enable Compute API
+gcloud services enable compute.googleapis.com                             
+
 gcloud config set compute/zone europe-west3-a
 gcloud config set compute/region europe-west3
 ```
