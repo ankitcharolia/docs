@@ -1,6 +1,6 @@
 ---
 layout: default
-title: linux
+title: Linux
 nav_order: 3
 has_children: true
 permalink: /linux
