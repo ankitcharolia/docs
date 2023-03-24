@@ -1,5 +1,7 @@
 ---
 layout: default
-title: Configuration
-nav_order: 2
+title: ArgoCD
+nav_order: 3
+has_children: true
+permalink: /argocd
 ---
