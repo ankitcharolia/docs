@@ -68,7 +68,7 @@ node transformdocs.js
 curl -d @app-db.json -H "Content-type: application/json" -X POST http://admin:oasjinjksf@127.0.0.1:5984/app-user
 ```
 
-### Create a User
+### Create a User (user: jan)
 ```shell
 curl -X PUT http://admin:oasjinjksf@127.0.0.1:5984/_users/org.couchdb.user:jan -H "Accept: application/json" -H "Content-Type: application/json" -d '{"name": "jan", "password": "apple", "roles": [], "type": "user"}'
 Output: {"ok":true,"id":"org.couchdb.user:jan","rev":"1-9be9fd6b312ed8ebc31ea940c0b21c80"}
@@ -87,4 +87,16 @@ curl http://admin:oasjinjksf@127.0.0.1:5984/_users/_all_docs
 ```shell
 curl -X POST http://admin:oasjinjksf@127.0.0.1:5984/_session -d 'name=jan&password=apple'
 Output: {"ok":true,"name":"jan","roles":[]}
+```
+
+## Grant Authorization
+### Declare user: jan as a member of a database
+```shell
+curl -X PUT http://admin:oasjinjksf@127.0.0.1:5984/<DB_NAME>/_security -H "Content-Type: application/json" -d '{"admins": { "names": [], "roles": [] }, "members": { "names": ["jan"], "roles": [] } }'
+{"ok":true}
+```
+
+### check if user can access the database now
+```shell
+curl -X GET http://<DB_USER>:<DB_PASSWORD>@127.0.0.1:5984/<DB_NAME>
 ```
