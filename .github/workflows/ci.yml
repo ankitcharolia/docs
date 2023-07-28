@@ -25,18 +25,14 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: false
-    - name: Bundle Install (Jekyll ${{ matrix.jekyll-version }})
+    - name: Bundle Install
       run: bundle install
-      env:
-        BUNDLE_GEMFILE: fixtures/Gemfile-jekyll-${{ matrix.jekyll-version }}
+    - name: Install Jekyll ${{ matrix.jekyll-version }}
+      run: gem install jekyll -v ${{ matrix.jekyll-version }}
     - name: Init Search
       run: bundle exec rake search:init
-      env:
-        BUNDLE_GEMFILE: fixtures/Gemfile-jekyll-${{ matrix.jekyll-version }}
     - name: Build Site
       run: bundle exec jekyll build
-      env:
-        BUNDLE_GEMFILE: fixtures/Gemfile-jekyll-${{ matrix.jekyll-version }}
 
   github-pages-build:
     name: Build (github-pages gem)
@@ -49,13 +45,9 @@ jobs:
         ruby-version: '3.1'
         bundler-cache: false
     - name: Bundle Install
-      run: bundle install
-      env:
-        BUNDLE_GEMFILE: fixtures/Gemfile-github-pages
+      run: BUNDLE_GEMFILE=fixtures/Gemfile-github-pages bundle install
     - name: Build Site
-      run: bundle exec jekyll build
-      env:
-        BUNDLE_GEMFILE: fixtures/Gemfile-github-pages
+      run: BUNDLE_GEMFILE=fixtures/Gemfile-github-pages bundle exec jekyll build
 
   assets:
     name: Test CSS and JS
