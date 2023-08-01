@@ -10,7 +10,7 @@ An index is a data structure that improves the speed of data retrieval from a da
 
 In general, indexes are beneficial for frequently queried columns and should be used judiciously to achieve the best performance for specific application.
 
-### create an index on the <table_name> table in a relational database. 
+### create an index on the database_table in a relational database. 
 ```shell
 CREATE INDEX <name_of_index> ON <table_name> (column_1, column_2, column_3);
 ```
