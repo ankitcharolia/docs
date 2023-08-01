@@ -47,7 +47,7 @@ kubectl debug -it ephemeral-pod-xxxxx --image=alpine --target=ephemeral-target-c
 
 Now, Once we are in interactive shell, we can browse all files and directory, run command and see all processes of container with which ephemeral container is sharing process namespace.
 
-#### Install some troubleshooting utilities in Ephemeral Container
+### Install some troubleshooting utilities in Ephemeral Container
 ```shell
 apk add --update --no-cache bind-tools sudo
 ```
