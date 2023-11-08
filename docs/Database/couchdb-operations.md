@@ -65,7 +65,7 @@ node transformdocs.js
 
 ### Import a Database
 ```shell
-curl -d @app-db.json -H "Content-type: application/json" -X POST http://admin:oasjinjksf@127.0.0.1:5984/app-user
+curl -d @app-user-modified.json -H "Content-type: application/json" -X POST http://admin:oasjinjksf@127.0.0.1:5984/<DB_NAME>/_bulk_docs
 ```
 
 ### Create a User (user: jan)
