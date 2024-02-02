@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Service Mesh
+title: Istio
 nav_order: 8
 has_children: true
-permalink: /servicemesh
+permalink: /istio
 ---
