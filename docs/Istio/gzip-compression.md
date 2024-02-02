@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  Activate Gzip Compression On The Ingress-Gateway
-parent: Service Mesh
+parent: Istio
 nav_order: 1
 ---
 
