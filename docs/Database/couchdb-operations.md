@@ -15,6 +15,11 @@ curl -X GET http://admin:oasjinjksf@127.0.0.1:5984/_all_dbs
 curl -X PUT http://admin:oasjinjksf@127.0.0.1:5984/<DB_NAME>
 ```
 
+### Delete a Database
+```shell
+curl -X DELETE http://admin:oasjinjksf@127.0.0.1:5984/<DB_NAME>
+```
+
 ### Export a Database
 ```shell
 curl -X GET http://admin:oasjinjksf@127.0.0.1:5984/<DB_NAME>/_all_docs?include_docs=true > app-user.json
