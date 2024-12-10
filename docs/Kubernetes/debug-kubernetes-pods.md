@@ -51,3 +51,25 @@ Now, Once we are in interactive shell, we can browse all files and directory, ru
 ```shell
 apk add --update --no-cache bind-tools sudo
 ```
+
+### Add K9s plugin for attaching ephemeral container
+```shell
+# add this plugin to /home/acharolia/.config/k9s/plugins.yaml
+plugins:
+  debug:
+    shortCut: Shift-D
+    confirm: false
+    description: Debug
+    scopes:
+    - containers
+    command: kubectl
+    background: false
+    args:
+    - debug
+    - -it
+    - -n
+    - $NAMESPACE
+    - $POD
+    - --target=$NAME
+    - --image=ubuntu
+```
