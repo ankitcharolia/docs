@@ -50,15 +50,28 @@ spec:
           - name: cloud-sql-proxy
             image: eu.gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.2.0-alpine
             args:
-              - "--private-ip"
-              - "--quiet"
-              - "--quitquitquit"
-              - "--structured-logs"
-              - "--health-check"
-              - "--http-port=9090"
-              - "--max-sigterm-delay=20s"
-              - "--port=3306"
-              - "dummy-project:europe-west3:dummy-instance-name"
+              - --private-ip
+              - --address=0.0.0.0
+              - --quiet
+              - --quitquitquit
+              - --structured-logs
+              - --health-check
+              - --http-port=9090
+              # Tell the proxy to exit gracefully if it receives a SIGTERM
+              - --exit-zero-on-sigterm
+              - --max-sigterm-delay=20s
+              - --run-connection-test
+              - --port=3306
+              - dummy-project:europe-west3:dummy-instance-name
+            # Configure kubernetes to call the /quitquitquit endpoint on the
+            # admin server before sending SIGTERM to the proxy before stopping
+            # the pod. This will give the proxy more time to gracefully exit.
+            lifecycle:
+              preStop:
+                httpGet:
+                  path: /quitquitquit
+                  port: 9091
+                  scheme: HTTP
             startupProbe:
               # The /startup probe returns OK when the proxy is ready to receive
               # connections from the application. In this example, k8s will check
@@ -155,3 +168,12 @@ spec:
   schedule: "*/5 * * * *"
   successfulJobsHistoryLimit: 1
 ```
+
+## successfully terminate sidecar container
+```shell
+# reference: https://stackoverflow.com/questions/41679364/kubernetes-stop-cloudsql-proxy-sidecar-container-in-multi-container-pod-job/76989549#76989549
+<cronjob-commands>;exit_code=$?; curl -X POST localhost:9091/quitquitquit && exit $exit_code
+```
+
+## References
+* [Use Sidecard native feature](https://github.com/GoogleCloudPlatform/cloud-sql-proxy/issues/128#issuecomment-2264787327)
