@@ -73,7 +73,7 @@ go install github.com/google/go-containerregistry/cmd/crane@latest
 ```
 
 
-### 
+### Convert Docker image schema version
 ```shell
 # convert image to v2s2 format, which is supported by containerd v2.0
 skopeo copy docker://eu.gcr.io/google_containers/volume-nfs:0.8 docker://europe-west3-docker.pkg.dev/gcp-test/images/volume-nfs:0.9 --format v2s2

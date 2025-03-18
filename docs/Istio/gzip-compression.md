@@ -47,3 +47,9 @@ Next, request a service through the ingress gateway and set the accept-encoding 
 ```shell
 curl -H "accept-encoding: gzip,deflate" ...
 ```
+
+
+### Allow compression for the Envoy stats endpoints
+* [Pull Request](https://github.com/istio/istio/pull/47997/files)
+* [add podAnnotation](https://github.com/istio/istio/issues/30987#issuecomment-2117418583)
+* [Verify the compression](https://github.com/istio/istio/issues/30987#issuecomment-822517456)
