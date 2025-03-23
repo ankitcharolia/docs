@@ -20,6 +20,7 @@ NOTE: Ask AI tools to prepare Sidecar manifest for specific POD by providing `is
 
 ### Simple FIX
 * Using the Sidecar custom resource, you can easily limit the **namespaces** for which the Istio control plane will push information to your proxy sidecars.
+
 ```shell
 apiVersion: networking.istio.io/v1
 kind: Sidecar
@@ -32,6 +33,7 @@ spec:
     - "./*"
     - "istio-system/*"
 ```
+
 **NOTE:** The above Sidecar limits the scope of the traffic management of Istio proxy sidecars deployed in the cluster to only the services deployed in the same namespace as them, and to services deployed in the istio-system namespace, where the Istio control plane and ingress/egress gateway services are deployed.
 
 ### References:
