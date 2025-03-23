@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Important Prometheus Query to debug in k8s environments
-parent: Monitoring
+parent: Observability
 nav_order: 1
 ---
 

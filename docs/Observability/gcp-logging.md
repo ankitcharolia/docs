@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Important GCP Log Queries
-parent: Monitoring
+parent: Observability
 nav_order: 2
 ---
 
