@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Monitoring
+title: Observability
 nav_order: 11
 has_children: true
-permalink: /monitoring
+permalink: /observability
 ---

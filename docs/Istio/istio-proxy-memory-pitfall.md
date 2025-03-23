@@ -16,7 +16,7 @@ Istio proxy suddenly starts consuming 700MB to 1.2 GB each in the **larger clust
 ```shell
 istioctl proxy-config clusters <POD> -n <NAMESPACE>
 ```
-NOTE: Ask AI tools to prepare Sidecar manifest for specific POD by providing `istioctl pc clusters <POD>` output.
+**NOTE:** **Ask AI tools to prepare Sidecar manifest** for specific POD by providing `istioctl pc clusters <POD>` output.
 
 ### Simple FIX
 * Using the Sidecar custom resource, you can easily limit the **namespaces** for which the Istio control plane will push information to your proxy sidecars.
