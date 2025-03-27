@@ -84,6 +84,7 @@ spec:
                 port: 9090
               periodSeconds: 1
               timeoutSeconds: 5
+              successThreshold: 1
               failureThreshold: 20
             livenessProbe:
               # The /liveness probe returns OK as soon as the proxy application has
@@ -97,9 +98,9 @@ spec:
               # Not necessary when the startup probe is in use.
               initialDelaySeconds: 0
               # Frequency of the probe.
-              periodSeconds: 60
+              periodSeconds: 10
               # Number of seconds after which the probe times out.
-              timeoutSeconds: 30
+              timeoutSeconds: 10
               # Number of times the probe is allowed to fail before the transition
               # from healthy to failure state.
               #
