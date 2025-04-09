@@ -30,7 +30,7 @@ containers:
   terminationGracePeriodSeconds: 30
 ```
 
-**NOTE:** https://kubernetes.io/docs/concepts/workloads/pods/init-containers/#differences-from-regular-containers
+**NOTE:** [https://kubernetes.io/docs/concepts/workloads/pods/init-containers/#differences-from-regular-containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/#differences-from-regular-containers)
 ```yaml
 init containers do not support lifecycle, livenessProbe, readinessProbe, or startupProbe whereas sidecar containers support all these probes to control their lifecycle.
 ```
