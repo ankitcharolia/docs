@@ -56,7 +56,8 @@ spec:
               - --quitquitquit
               - --structured-logs
               - --health-check
-              - --http-port=9090
+              - --http-address=127.0.0.1
+              - --http-port=9801
               # Tell the proxy to exit gracefully if it receives a SIGTERM
               - --exit-zero-on-sigterm
               - --max-sigterm-delay=20s
@@ -66,7 +67,11 @@ spec:
             # Configure kubernetes to call the /quitquitquit endpoint on the
             # admin server before sending SIGTERM to the proxy before stopping
             # the pod. This will give the proxy more time to gracefully exit.
+            # Reference: https://github.com/GoogleCloudPlatform/cloud-sql-proxy/pull/2041
             lifecycle:
+              postStart:
+                exec:
+                  command: ["./clopud-sql-proxy", "wait", "--http-address", "127.0.0.1", "--http-port", "9801", "--max", "30s" ]
               preStop:
                 httpGet:
                   path: /quitquitquit
@@ -81,7 +86,7 @@ spec:
               # the pod only after the proxy has successfully started.
               httpGet:
                 path: /startup
-                port: 9090
+                port: 9801
               periodSeconds: 1
               timeoutSeconds: 5
               successThreshold: 1
@@ -93,7 +98,7 @@ spec:
               # We recommend adding a liveness probe to the proxy sidecar container.
               httpGet:
                 path: /liveness
-                port: 9090
+                port: 9801
               # Number of seconds after the container has started before the first probe is scheduled. Defaults to 0.
               # Not necessary when the startup probe is in use.
               initialDelaySeconds: 0
@@ -118,7 +123,7 @@ spec:
               # interruption to the application. See README.md for more detail.
               httpGet:
                 path: /readiness
-                port: 9090
+                port: 9801
               initialDelaySeconds: 10
               periodSeconds: 10
               timeoutSeconds: 10
